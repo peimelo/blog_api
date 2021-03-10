@@ -1,24 +1,50 @@
-# README
+# Blog API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails 6 course as API showing authentication via [devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth).
 
-Things you may want to cover:
+This repository is part of the [Ruby on Rails 6 - Autenticação via API](https://www.youtube.com/watch?v=i6vul6MqylE&list=PLqsayW8DhUmsuvK17gwSI_rKbAlmxFIw5) on YouTube.
 
-* Ruby version
+<table>
+  <tr>
+    <td>Ruby version</td>
+    <td>
+      3.0.0
+    </td>
+  </tr>
+  <tr>
+    <td>Rails version</td>
+    <td>
+      6.1.3
+    </td>
+  </tr>
+  <tr>
+    <td>Database</td>
+    <td>
+      PostgreSQL
+    </td>
+  </tr>
+</table>
 
-* System dependencies
+## Initial settings to run the project
 
-* Configuration
+```bash
+# clone the project
+git clone https://github.com/peimelo/blog_api.git
 
-* Database creation
+# enter the cloned directory
+cd blog_api
 
-* Database initialization
+# install Ruby on Rails dependencies
+bundle install
 
-* How to run the test suite
+# create the development and test databases
+rails db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+# create the tables
+rails db:migrate
 
-* Deployment instructions
+# run the project
+rails s
+```
 
-* ...
+The backend is available at `http://localhost:3000`.
