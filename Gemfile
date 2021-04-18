@@ -27,3 +27,5 @@ gem "active_model_serializers", "~> 0.10.12"
 gem "rspec-rails", "~> 5.0", :groups => [:development, :test]
 
 gem "shoulda-matchers", "~> 4.5", :group => :test
+
+gem "simplecov", "~> 0.21.2", :group => :test, require: false
