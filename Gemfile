@@ -23,3 +23,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise_token_auth", "~> 1.1"
 gem "active_model_serializers", "~> 0.10.12"
+
+gem "rspec-rails", "~> 5.0", :groups => [:development, :test]
