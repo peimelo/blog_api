@@ -29,3 +29,5 @@ gem "rspec-rails", "~> 5.0", :groups => [:development, :test]
 gem "shoulda-matchers", "~> 4.5", :group => :test
 
 gem "simplecov", "~> 0.21.2", :group => :test, require: false
+
+gem "factory_bot_rails", "~> 6.1", :groups => [:development, :test]
