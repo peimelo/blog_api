@@ -25,3 +25,5 @@ gem "devise_token_auth", "~> 1.1"
 gem "active_model_serializers", "~> 0.10.12"
 
 gem "rspec-rails", "~> 5.0", :groups => [:development, :test]
+
+gem "shoulda-matchers", "~> 4.5", :group => :test
