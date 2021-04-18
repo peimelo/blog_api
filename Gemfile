@@ -33,3 +33,5 @@ gem "simplecov", "~> 0.21.2", :group => :test, require: false
 gem "factory_bot_rails", "~> 6.1", :groups => [:development, :test]
 
 gem "faker", "~> 2.17", :groups => [:development, :test]
+
+gem "database_cleaner-active_record", "~> 2.0", :group => :test
