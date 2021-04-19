@@ -78,4 +78,6 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  config.include Request::JsonHelpers, type: :request
 end

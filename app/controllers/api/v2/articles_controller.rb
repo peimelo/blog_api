@@ -43,7 +43,7 @@ class Api::V2::ArticlesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_article
-    @article = current_api_user.articles.find(params[:id])
+    @article = current_api_user.articles.find_by_id!(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
