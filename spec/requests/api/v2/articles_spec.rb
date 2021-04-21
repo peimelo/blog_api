@@ -12,41 +12,35 @@ RSpec.describe '/articles', type: :request do
   let(:valid_headers) { user.create_new_auth_token }
 
   describe 'GET /index' do
-    context 'without logged user' do
-      it 'renders a successful response' do
-        get api_articles_url, headers: {}, as: :json
-        expect(response).to be_successful
-      end
+    it 'renders a successful response' do
+      get api_articles_url, headers: {}, as: :json
+      expect(response).to be_successful
+    end
 
-      it 'renders two articles from distinct users' do
-        article
-        article_two
+    it 'renders two articles from distinct users' do
+      article
+      article_two
 
-        get api_articles_url, headers: {}, as: :json
-        expect(json_response.size).to eq 2
-      end
+      get api_articles_url, headers: {}, as: :json
+      expect(json_response.size).to eq 2
     end
   end
 
   describe 'GET /show' do
-    context 'with logged user' do
-      it 'renders a successful response' do
-        get api_article_url(article), headers: valid_headers, as: :json
-        expect(response).to be_successful
-      end
+    it 'renders a successful response' do
+      get api_article_url(article), headers: valid_headers, as: :json
+      expect(response).to be_successful
     end
 
-    context 'with logged user trying to access another user\'s resource' do
-      it 'renders a not found response' do
+    it_behaves_like "trying to access another user's resource" do
+      let(:url) do
         get api_article_url(article_two), headers: valid_headers, as: :json
-        expect(response).to have_http_status(:not_found)
       end
     end
 
-    context 'without logged user' do
-      it 'renders an unauthorized response' do
+    it_behaves_like 'user not logged in' do
+      let(:url) do
         get api_article_url(article), headers: {}, as: :json
-        expect(response).to have_http_status(:unauthorized)
       end
     end
   end
@@ -92,11 +86,12 @@ RSpec.describe '/articles', type: :request do
       end
     end
 
-    context 'without logged user' do
-      it 'renders an unauthorized response' do
+    it_behaves_like 'user not logged in' do
+      let(:url) do
         post api_articles_url,
-             params: { article: valid_attributes }, headers: {}, as: :json
-        expect(response).to have_http_status(:unauthorized)
+             params: { article: valid_attributes },
+             headers: {},
+             as: :json
       end
     end
   end
@@ -135,43 +130,39 @@ RSpec.describe '/articles', type: :request do
       end
     end
 
-    context 'with logged user trying to access another user\'s resource' do
-      it 'renders a not found response' do
+    it_behaves_like "trying to access another user's resource" do
+      let(:url) do
         patch api_article_url(article_two), headers: valid_headers, as: :json
-        expect(response).to have_http_status(:not_found)
       end
     end
 
-    context 'without logged user' do
-      it 'renders an unauthorized response' do
+    it_behaves_like 'user not logged in' do
+      let(:url) do
         patch api_article_url(article),
-              params: { article: valid_attributes }, headers: {}, as: :json
-        expect(response).to have_http_status(:unauthorized)
+              params: { article: valid_attributes },
+              headers: {},
+              as: :json
       end
     end
   end
 
   describe 'DELETE /destroy' do
-    context 'with logged user' do
-      it 'destroys the requested article' do
-        article
-        expect do
-          delete api_article_url(article), headers: valid_headers, as: :json
-        end.to change(Article, :count).by(-1)
-      end
+    it 'destroys the requested article' do
+      article
+      expect do
+        delete api_article_url(article), headers: valid_headers, as: :json
+      end.to change(Article, :count).by(-1)
     end
 
-    context 'with logged user trying to access another user\'s resource' do
-      it 'renders a not found response' do
+    it_behaves_like "trying to access another user's resource" do
+      let(:url) do
         delete api_article_url(article_two), headers: valid_headers, as: :json
-        expect(response).to have_http_status(:not_found)
       end
     end
 
-    context 'without logged user' do
-      it 'renders an unauthorized response' do
+    it_behaves_like 'user not logged in' do
+      let(:url) do
         delete api_article_url(article), headers: {}, as: :json
-        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

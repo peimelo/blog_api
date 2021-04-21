@@ -14,7 +14,7 @@ This repository is part of the [Ruby on Rails 6 - Autenticação via API](https:
   <tr>
     <td>Rails version</td>
     <td>
-      6.1.3
+      6.1.3.1
     </td>
   </tr>
   <tr>
@@ -25,26 +25,64 @@ This repository is part of the [Ruby on Rails 6 - Autenticação via API](https:
   </tr>
 </table>
 
-## Initial settings to run the project
+## Configuration
 
 ```bash
-# clone the project
 git clone https://github.com/peimelo/blog_api.git
-
-# enter the cloned directory
 cd blog_api
 
-# install Ruby on Rails dependencies
+# installation of dependencies
 bundle install
 
-# create the development and test databases
+# creation of database and tables
 rails db:create
-
-# create the tables
 rails db:migrate
+rails db:migrate RAILS_ENV=test
 
 # run the project
 rails s
 ```
 
 The backend is available at `http://localhost:3000`.
+
+## Configuration for Production
+
+```bash
+# delete the config/credentials.yml.enc file
+rm config/credentials.yml.enc
+
+# run the command to create credentials and master key (replace 'code' if you don't use VS Code)
+EDITOR="code --wait" bin/rails credentials:edit
+```
+
+Add the information below in the [credentials](https://guides.rubyonrails.org/security.html#custom-credentials) to configure the email used by the Devise
+gem (replace with the values ​​you want):
+
+```yml
+# ... your content above
+
+gmail:
+  user_name: your@email.com
+  password: your_password
+```
+
+Save and close the `config/credentials.yml.enc` file.
+
+If you want to use another email provider, change it in the file
+`config/environments/production.rb`.
+
+To configure `default_confirm_success_url`, change it in the file
+`config/initializers/devise_token_auth.rb`.
+
+To configure [CORS](https://github.com/cyu/rack-cors) `origins`, change it in the file
+`config/initializers/cors.rb`.
+
+## Tests
+
+![Tests](https://github.com/peimelo/blog_api/actions/workflows/ruby.yml/badge.svg)
+
+To run the tests:
+
+```bash
+bundle exec rspec
+```
