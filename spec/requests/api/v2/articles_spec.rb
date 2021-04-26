@@ -22,7 +22,7 @@ RSpec.describe '/articles', type: :request do
       article_two
 
       get api_articles_url, headers: {}, as: :json
-      expect(json_response.size).to eq 2
+      expect(json_response[:articles].size).to eq 2
     end
   end
 
