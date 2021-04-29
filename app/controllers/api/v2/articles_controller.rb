@@ -6,7 +6,9 @@ class Api::V2::ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.page(current_page).per(per_page)
+    @articles = Article.sorted(params[:sort], params[:dir])
+                       .page(current_page)
+                       .per(per_page)
 
     render json: @articles, meta: meta_attributes(@articles), adapter: :json
   end

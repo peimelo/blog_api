@@ -11,4 +11,11 @@ RSpec.describe Article, type: :model do
 
     it { should validate_uniqueness_of(:title).case_insensitive }
   end
+
+  describe 'concerns' do
+    it '.sorted' do
+      expect(Article.order('body desc').to_sql).to eq Article.sorted('body', 'desc').to_sql
+      expect(Article.order('title asc').to_sql).to eq Article.sorted('x', 'x').to_sql
+    end
+  end
 end
