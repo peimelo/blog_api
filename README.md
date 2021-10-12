@@ -8,7 +8,7 @@ This repository is part of the [Ruby on Rails 6 - Autenticação via API](https:
   <tr>
     <td>Ruby version</td>
     <td>
-      3.0.0
+      3.0.2
     </td>
   </tr>
   <tr>
