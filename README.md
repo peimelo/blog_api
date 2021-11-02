@@ -86,3 +86,34 @@ To run the tests:
 ```bash
 bundle exec rspec
 ```
+
+### Using Insomnia to test the API
+
+If you want to import the above requests into [Insomnia](https://insomnia.rest/download), use the file `Insomnia.json` at the root of this project.
+
+It will be necessary to install the plugin [insomnia-plugin-dotenv](https://insomnia.rest/plugins/insomnia-plugin-dotenv).
+
+Create an environment variable file at the root of the project to add sensitive data:
+
+```bash
+touch .env.development
+```
+
+Add the contents below to the file above:
+
+```bash
+password=your-password
+access-token=your-access-token
+client=your-client
+```
+
+In Insomnia, go to `Manage Environments` and set the `envFilePath` value to the file path `.env.development`:
+
+```json
+{
+  // ... your code above
+  "envFilePath": "/path/to/file/your_repo/.env.development"
+}
+```
+
+Any `.env.*` file is being ignored by this project's GIT.
