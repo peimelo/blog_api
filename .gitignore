@@ -31,3 +31,6 @@
 /coverage
 
 .DS_Store
+
+# Hide env files
+.env.*
