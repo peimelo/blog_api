@@ -64,6 +64,8 @@ gem (replace with the values ​​you want):
 gmail:
   user_name: your@email.com
   password: your_password
+
+exception_recipients: exceptions@example.com
 ```
 
 Save and close the `config/credentials.yml.enc` file.
@@ -77,6 +79,9 @@ To configure `default_confirm_success_url`, change it in the file
 To configure [CORS](https://github.com/cyu/rack-cors) `origins`, change it in the file
 `config/initializers/cors.rb`.
 
+To configure [Exception Notification](https://github.com/smartinez87/exception_notification), change it in the file
+`config/initializers/exception_notification.rb`.
+
 ## Tests
 
 ![Tests](https://github.com/peimelo/blog_api/actions/workflows/ruby.yml/badge.svg)
@@ -89,7 +94,7 @@ bundle exec rspec
 
 ### Using Insomnia to test the API
 
-If you want to import the above requests into [Insomnia](https://insomnia.rest/download), use the file `Insomnia.json` at the root of this project.
+If you want to import the requests into [Insomnia](https://insomnia.rest/download), use the file `Insomnia.json` at the root of this project.
 
 It will be necessary to install the plugin [insomnia-plugin-dotenv](https://insomnia.rest/plugins/insomnia-plugin-dotenv).
 
