@@ -8,13 +8,13 @@ This repository is part of the [Ruby on Rails 6 - Autenticação via API](https:
   <tr>
     <td>Ruby version</td>
     <td>
-      3.0.2
+      3.0.3
     </td>
   </tr>
   <tr>
     <td>Rails version</td>
     <td>
-      6.1.3.1
+      6.1.5
     </td>
   </tr>
   <tr>
